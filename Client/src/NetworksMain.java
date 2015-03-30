@@ -5,17 +5,16 @@ public class NetworksMain {
 		NetworksClient networksClient = null;
 		
 		try {
-			networksClient = new NetworksClient(new URL("http://www.thekyzrproject.com/info"));
+			networksClient = new NetworksClient();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
 		if(networksClient != null) {
-			System.out.println("Entered");
-			String response = networksClient.sendMessage(".skcus noryB");
-			System.out.println(response);
+			String response1 = networksClient.sendData("abc", "123", 1.123, 54.342);
+			String response2 = networksClient.requestData("abc");
 		} else {
-			System.out.println("Didn't work.");
+			System.out.println("Failed.");
 		}
 		
 		System.out.println("End");

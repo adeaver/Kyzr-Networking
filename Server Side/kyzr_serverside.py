@@ -6,6 +6,8 @@ app = Flask(__name__)
 def index():
 	return render_template('index.html')
 
+# BELOW IS THE ONLY IMPORTANT PART
+
 @app.route('/dbadd', methods=['GET', 'POST'])
 def dbadd():
 	lat = -9999
@@ -14,10 +16,17 @@ def dbadd():
 	id2 = ""
 	if request.method=="POST":
 		for key in request.form.keys():
+			print request.form
 			if key == "lat":
-				lat = request.form[key]
+				try:
+					lat = float(request.form[key])
+				except:
+					lat = -9999
 			elif key == "lng":
-				lng = request.form[key]
+				try:
+					lng = float(request.form[key])
+				except:
+					lng = -9999
 			elif key == "id1":
 				id1 = request.form[key]
 			elif key == "id2":
@@ -33,13 +42,13 @@ def dbadd():
 def dbreturn():
 	oldid = ""
 	newid = ""
-	points = "" # is this something that we're doing?
 	if request.method=="POST":
+		print request.form
 		if "old_id" in request.form.keys():
 			oldid = request.form["old_id"]
 			# get data from database
 			# newid = something
-			return newid + " - " + points
+			return newid
 
 	return "Request Failed"
 
