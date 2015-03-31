@@ -11,8 +11,8 @@ public class NetworksMain {
 		}
 		
 		if(networksClient != null) {
-			String response1 = networksClient.sendData("abc", "123", 1.123, 54.342);
-			String response2 = networksClient.requestData("abc");
+			String response1 = networksClient.sampleSend("This is a test");
+			System.out.println(response1);
 		} else {
 			System.out.println("Failed.");
 		}

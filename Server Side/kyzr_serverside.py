@@ -16,7 +16,6 @@ def dbadd():
 	id2 = ""
 	if request.method=="POST":
 		for key in request.form.keys():
-			print request.form
 			if key == "lat":
 				try:
 					lat = float(request.form[key])
@@ -43,7 +42,6 @@ def dbreturn():
 	oldid = ""
 	newid = ""
 	if request.method=="POST":
-		print request.form
 		if "old_id" in request.form.keys():
 			oldid = request.form["old_id"]
 			# get data from database
